@@ -1,7 +1,8 @@
 function editCourse(event) {
     let course_1 = [6701, 6533, 11583, 10157, 11801, 11301, 9075, 10972, 10972, 11150, 9659, 11206, 11834, 10263, 10042, 9399, 6359, 12565];
     let course_2 = [6701, 4699, 4739, 12991, 14178, 10477, 14887, 15047, 14737, 14837, 13444, 13494, 13311, 13264, 13138, 13389, 9162, 6672, 6359];
-    let now = [4739, 14887, 15047, 14737, 14837, 13311, 6672, 12565, 6701]
+    let course_3 = [16033, 16227, 13311, 15936, 16176, 16032, 6672, 6359, 6701, 17779, 17747, 17746, 17761, 17760, 17736, 17717];
+    let now = [6701, 17779, 17747, 17746, 17761, 17760, 17736, 17717, 16033]
 
     var courses_list = document.getElementsByClassName("courses frontpage-course-list-enrolled")[0].childNodes;
 
@@ -22,6 +23,14 @@ function editCourse(event) {
                 }
             });
             break;
+        case 'Курс 3':
+                Array.from(courses_list).forEach(element => {
+                    element.hidden = false;
+                    if (!(course_3.includes(Number(element.getAttribute("data-courseid"))))) {
+                        element.hidden = true;
+                    }
+                });
+                break;
         case 'Полезное сейчас':
             Array.from(courses_list).forEach(element => {
                 element.hidden = false;
@@ -70,6 +79,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     '</form>' +
                     '<form class="course_filter_forms">' +
                     '<input type="submit" value="Курс 2" data-toggle="button" class="btn_course">' +
+                    '</form>' +
+                    '<form class="course_filter_forms">' +
+                    '<input type="submit" value="Курс 3" data-toggle="button" class="btn_course">' +
                     '</form>' +
                     '<form class="course_filter_forms">' +
                     '<input type="submit" value="Полезное сейчас" data-toggle="button" class="btn_course">' +
